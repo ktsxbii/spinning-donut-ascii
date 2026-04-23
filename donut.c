@@ -9,7 +9,6 @@ int main() {
     int k;
     float z[1760];
     char b[1760];
-    float t_color = 0;
     printf("\x1b[2J");
     for (;;) {
         memset(b, 32, 1760);
@@ -38,20 +37,12 @@ int main() {
             }
         }
         printf("\x1b[H");
-        int r = 127.5 * (sin(t_color) + 1);
-        int g = 127.5 * (sin(t_color + 2) + 1);
-        int b_val = 127.5 * (sin(t_color + 4) + 1);
         for (k = 0; k < 1760; k++) {
             if (k % 80 == 0 && k != 0) putchar(10);
-            if (b[k] != ' ') {
-                printf("\x1b[38;2;%d;%d;%dm%c\x1b[0m", r, g, b_val, b[k]);
-            } else {
-                putchar(' ');
-            }
+            putchar(b[k]);
         }
         A += 0.04;
         B += 0.02;
-        t_color += 0.02;
         usleep(30000);
     }
     return 0;
