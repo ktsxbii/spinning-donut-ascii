@@ -1,3 +1,4 @@
+![ASCII Donut Banner](./banner.png)
 # ASCII Donut
 
 A spinning 3D torus rendered in your terminal using pure C and ASCII characters.
