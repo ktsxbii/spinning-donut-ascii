@@ -38,14 +38,12 @@ int main() {
             }
         }
         printf("\x1b[H");
+        int r = 127.5 * (sin(t_color) + 1);
+        int g = 127.5 * (sin(t_color + 2) + 1);
+        int b_val = 127.5 * (sin(t_color + 4) + 1);
         for (k = 0; k < 1760; k++) {
             if (k % 80 == 0 && k != 0) putchar(10);
             if (b[k] != ' ') {
-                int x = k % 80;
-                int y = k / 80;
-                int r = 127.5 * (sin(0.1 * x + t_color) + 1);
-                int g = 127.5 * (sin(0.1 * y + t_color + 2) + 1);
-                int b_val = 127.5 * (sin(0.1 * (x + y) + t_color + 4) + 1);
                 printf("\x1b[38;2;%d;%d;%dm%c\x1b[0m", r, g, b_val, b[k]);
             } else {
                 putchar(' ');
@@ -53,7 +51,7 @@ int main() {
         }
         A += 0.04;
         B += 0.02;
-        t_color += 0.05;
+        t_color += 0.02;
         usleep(30000);
     }
     return 0;
